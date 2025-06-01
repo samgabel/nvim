@@ -4,8 +4,6 @@ vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboar
 vim.opt.guicursor = "n-v-c-sm:block,i-ci:ver30-iCursor-blinkwait300-blinkon200-blinkoff150,r-cr-o:hor20" -- cursor styles default
 vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
-vim.opt.conceallevel = 1 -- conceals things like code block (```), bold (**), and full path links in .md notes
-vim.opt.concealcursor = "nc" -- works with conceallevel
 -- vim.opt.fileencoding = "utf-8" -- the encoding written to a file
 vim.opt.hlsearch = false -- highlight all matches on previous search pattern
 vim.opt.incsearch = true -- smarter search we can do things like: " vim.* = "
