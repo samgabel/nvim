@@ -115,7 +115,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 vim.api.nvim_create_autocmd({ "VimResized" }, {
     callback = function()
         -- ensures that the layout remains balanced and adjusts the window sizes accordingly
-        vim.cmd "tabdo wincmd ="
+        vim.cmd "wincmd ="
     end,
 })
 
