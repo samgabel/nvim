@@ -18,6 +18,7 @@ function M.config()
         "rust_analyzer",
         "gopls",
         "clangd",
+        "zls",
         "html",
         "cssls",
         "bashls",
