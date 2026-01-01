@@ -157,3 +157,16 @@ vim.api.nvim_create_user_command("NullLsStop", function()
         require("null-ls").disable({})
     end
 end, {})
+
+-------------------------------------- CHEZMOI -------------------------------------
+
+--- Custom command to run `chezmoi re-add %`
+vim.api.nvim_create_user_command("WC", function()
+    local chezmoi_list = vim.fn.system("chezmoi list")
+    local user_home = vim.fn.system("echo $HOME" .. "/")
+    local filepath = vim.fn.expand("%") -- Get the full path of the current file
+
+    vim.notify("Running `chezmoi re-add`...")
+    vim.cmd("write")
+    vim.fn.system({"chezmoi", "re-add", filepath})
+end, {})

@@ -16,6 +16,9 @@ function M.config()
     require("snacks").setup({
         lazygit = {
             configure = true,
+        },
+        terminal = {
+            enabled = true,
         }
     })
 
