@@ -4,6 +4,8 @@
 ;; We have to define the @*.outer bounds of the textobject to be able to "travel backwards" to select a specific component of the textobject
 ;; https://github.com/nvim-treesitter/nvim-treesitter-textobjects?tab=readme-ov-file#overriding-or-extending-textobjects
 
+;; Should probably find a way to extend the reference file above (;; extends) instead of redefining the entire thing
+;; there is some custom logic, but that can easily be modularized and extended to other languages
 
 ; FUNCTIONS
 
@@ -15,12 +17,9 @@
   body: (block
     .
     "{"
+    _+ @function.inner
     .
-    (_) @_start @_end
-    (_)? @_end
-    .
-    "}"
-    (#make-range! "function.inner" @_start @_end)))
+    "}"))
 
 ;; outer function literals
 (func_literal
@@ -31,12 +30,9 @@
   body: (block
     .
     "{"
+    _+ @function.inner
     .
-    (_) @_start @_end
-    (_)? @_end
-    .
-    "}"
-    (#make-range! "function.inner" @_start @_end)))
+    "}"))
 
 
 ; METHODS
@@ -60,12 +56,9 @@
   body: (block
     .
     "{"
+    _+ @function.inner
     .
-    (_) @_start @_end
-    (_)? @_end
-    .
-    "}"
-    (#make-range! "function.inner" @_start @_end)))
+    "}"))
 
 
 ; TYPES
@@ -78,12 +71,9 @@
       (field_declaration_list
         .
         "{"
+        _+ @type.inner
         .
-        (_) @_start
-        (_)? @_end
-        .
-        "}"
-        (#make-range! "type.inner" @_start @_end))))) @type.outer
+        "}")))) @type.outer
 
 ;; interface declaration as type textobject?
 (type_declaration
@@ -92,12 +82,9 @@
     (interface_type
       .
       "{"
+      _+ @type.inner
       .
-      (_) @_start
-      (_)? @_end
-      .
-      "}"
-      (#make-range! "type.inner" @_start @_end)))) @type.outer
+      "}"))) @type.outer
 
 ;; struct literals as type textobject
 (composite_literal
@@ -107,12 +94,9 @@
   (literal_value
     .
     "{"
+    _+ @type.inner
     .
-    (_) @_start
-    (_)? @_end
-    .
-    "}"
-    (#make-range! "type.inner" @_start @_end))) @type.outer
+    "}")) @type.outer
 
 
 ; CONDITIONALS
@@ -129,12 +113,9 @@
   consequence: (_
     .
     "{"
+    _+ @conditional.consequence
     .
-    (_) @_start
-    (_)? @_end
-    .
-    "}"
-    (#make-range! "conditional.consequence" @_start @_end)))
+    "}"))
 
 ;; conditional alternative textobject
 (if_statement
@@ -156,12 +137,9 @@
   body: (block
     .
     "{"
+    _+ @loop.body
     .
-    (_) @_start
-    (_)? @_end
-    .
-    "}"
-    (#make-range! "loop.body" @_start @_end)))
+    "}"))
 
 
 ; CALLS
@@ -174,12 +152,9 @@
   arguments: (argument_list
     .
     "("
+    _+ @call.inner
     .
-    (_) @_start
-    (_)? @_end
-    .
-    ")"
-    (#make-range! "call.inner" @_start @_end)))
+    ")"))
 
 
 ; PARAMETERS
@@ -189,12 +164,8 @@
 (_
  parameters: (parameter_list
   "("
-  .
-  (_) @_start
-  (_)? @_end
-  .
-  ")"
-  (#make-range! "parameter.outer" @_start @_end)))
+  _+ @parameter.outer
+  ")"))
 
 ;; inner parameters textobject for function/method declarations
 ;; (excludes parameter_list under method receivers)
@@ -209,10 +180,9 @@
 ;; inner variadic parameters textobject
 ;; works for every parameter_list with a variadic syntax (...)
 (parameter_list
-  "," @_start
+  ","
   .
-  (variadic_parameter_declaration) @parameter.inner
-  (#make-range! "parameter.outer" @_start @parameter.inner))
+  (variadic_parameter_declaration) @parameter.inner) @parameter.outer
 
 
 ; ARGUMENTS
@@ -222,12 +192,8 @@
 (_
  arguments: (argument_list
   "("
-  .
-  (_) @_start
-  (_)? @_end
-  .
-  ")"
-  (#make-range! "parameter.outer" @_start @_end)))
+  _+ @parameter.outer
+  ")"))
 
 ;; inner arguments textobject
 ;; for selecting individual function/method call args
@@ -285,4 +251,3 @@
 
 ; COMMENTS
 (comment) @comment.outer
-

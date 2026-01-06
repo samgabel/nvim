@@ -41,12 +41,14 @@ return {
         Vim = " ",
     },
     git = {
+        Git = " ",
         LineAdded = " ",
         LineModified = " ",
         LineRemoved = " ",
         FileDeleted = " ",
         FileIgnored = "◌",
-        FileRenamed = " ",
+        FileRenamed = "󰜶 ",
+        FileRenamedBack = "󰜳 ",
         FileStaged = "S",
         FileUnmerged = "",
         FileUnstaged = "",
@@ -55,7 +57,7 @@ return {
         Repo = " ",
         Octoface = " ",
         Copilot = " ",
-        Branch = "",
+        Branch = " ",
     },
     ui = {
         ArrowCircleDown = "",
@@ -121,7 +123,7 @@ return {
         Pencil = "󰏫 ",
         Plus = " ",
         Project = " ",
-        Search = " ",
+        Search = " ",
         SignIn = " ",
         SignOut = " ",
         Tab = "󰌒 ",
@@ -137,6 +139,7 @@ return {
         TriangleShortArrowUp = "",
     },
     diagnostics = {
+        Diagnostic = "󱖫 ",
         BoldError = "",
         Error = "",
         BoldWarning = "",
@@ -163,3 +166,4 @@ return {
         Database = " "
     },
 }
+
