@@ -78,6 +78,7 @@ function M.config()
                     { icon = " ", key = "e", desc = "Filesystem",      action = ":Neotree current" },
                     { icon = " ", key = "g", desc = "Git",             action = ":lua Snacks.lazygit()" },
                     { icon = " ", key = "r", desc = "Recent Files",    action = ":lua Snacks.dashboard.pick('oldfiles')" },
+                    { icon = "󱚠 ", key = "h", desc = "Opencode",        action = ":lua require('opencode').toggle()" },
                     { icon = " ", key = "c", desc = "Config",          action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
                     { icon = "󰒲 ", key = "l", desc = "Lazy",            action = ":Lazy" },
                     { icon = " ", key = "q", desc = "Quit",            action = ":qa" },

@@ -44,6 +44,7 @@ vim.opt.termguicolors = true  -- Enable 24-bit RGB colors in terminal
 -- TIMING
 vim.opt.timeoutlen = 1000  -- Time to wait for mapped sequence completion (ms)
 vim.opt.updatetime = 50    -- Faster completion update time (default 4000ms)
+vim.opt.autoread = true    -- Required for events reload (specifically opencode ai)
 
 -- UNDO
 vim.opt.undofile = true  -- Enable persistent undo across sessions

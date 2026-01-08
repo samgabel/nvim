@@ -154,7 +154,7 @@ return {
         Trace = "✎",
     },
     misc = {
-        Robot = "󰚩 ",
+        Robot = "󱚠 ",
         Squirrel = " ",
         Tag = " ",
         Watch = "",

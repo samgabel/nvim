@@ -15,6 +15,7 @@ return {
             -- Groups
             { "gl",         group = "Lsp",      icon = { icon = icons.kind.Value,       color = "purple" } },
             { "glc",        group = "Calls",    icon = { icon = icons.kind.Function,    color = "purple" } },
+            { "<leader>h",  group = "Ai",       icon = { icon = icons.misc.Robot,       color = "red" }, mode = { "n", "v" } },
             { "<leader>s",  group = "Side",     icon = { icon = icons.ui.Note,          color = "grey" } },
             { "<leader>f",  group = "Find" },
             { "<leader>g",  group = "Git" },
@@ -80,6 +81,17 @@ return {
         {
             { "<M-n>", desc = "Next Illuminated Textobject", icon = { icon = icons.ui.BoldArrowRight,   color = "grey" } },
             { "<M-p>", desc = "Prev Illuminated Textobject", icon = { icon = icons.ui.BoldArrowLeft,    color = "grey" } }
+        },
+        -- OPENCODE --
+        {
+            { "<leader>ha", "<CMD>lua require('opencode').ask('@this: ', { submit = true })<CR>",           desc = "Ask Line",          icon = { icon = icons.misc.Robot,  color = "green" } ,    mode = { "n", "v" } },
+            { "<leader>hf", "<CMD>lua require('opencode').ask('@buffer: ', { submit = true })<CR>",         desc = "Ask File",          icon = { icon = icons.misc.Robot,  color = "green" } ,    mode = { "n", "v" } },
+            { "<leader>hq", "<CMD>lua require('opencode').ask('@quickfix: ', { submit = true })<CR>",       desc = "Ask Qflist",        icon = { icon = icons.misc.Robot,  color = "green" } ,    mode = { "n", "v" } },
+            { "<leader>hd", "<CMD>lua require('opencode').ask('@diagnostics: ', { submit = true })<CR>",    desc = "Ask Diagnostics",   icon = { icon = icons.misc.Robot,  color = "green" } ,    mode = { "n", "v" } },
+            { "<leader>hs", "<CMD>lua require('opencode').select()<CR>",                                    desc = "Execute Action",    icon = { icon = icons.misc.Robot,  color = "orange" },    mode = { "n", "v" } },
+            { "<leader>hu", "<CMD>lua require('opencode').command('session.undo')<CR>",                     desc = "Undo",              icon = { icon = icons.misc.Robot,  color = "yellow" } },
+            { "<leader>hr", "<CMD>lua require('opencode').command('session.redo')<CR>",                     desc = "Redo",              icon = { icon = icons.misc.Robot,  color = "yellow" } },
+            { "<leader>ht", "<CMD>lua require('opencode').toggle()<CR>",                                    desc = "Toggle Opencode",   icon = { icon = icons.misc.Robot,  color = "red" } }
         },
     }
 }
