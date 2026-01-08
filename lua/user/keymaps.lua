@@ -6,11 +6,12 @@ return {
         -- GENERAL --
         {
             -- Single
-            { "<leader>q", ":confirm q <CR>",           desc = "Quit" },
-            { "<leader>w", "<CMD>Wrap<CR>",             desc = "Wrap" },
-            { "<leader>b", "<CMD>NoiceDismiss<CR>",     desc = "Dismiss" },
-            { "<C-t>",     "<CMD>pop<CR><CMD>tags<CR>", desc = "Tag Pop" },
-            { "<M-t>",     "<CMD>tag<CR><CMD>tags<CR>", desc = "Tag Forward" },
+            { "<leader>q", ":confirm q <CR>",               desc = "Quit" },
+            { "<leader>w", "<CMD>Wrap<CR>",                 desc = "Wrap" },
+            { "<leader>b", "<CMD>NoiceDismiss<CR>",         desc = "Dismiss" },
+            { "<leader>x", "<CMD>DeleteListedBuffers<CR>",  desc = "Delete Buffers" },
+            { "<C-t>",     "<CMD>pop<CR><CMD>tags<CR>",     desc = "Tag Pop" },
+            { "<M-t>",     "<CMD>tag<CR><CMD>tags<CR>",     desc = "Tag Forward" },
             -- Groups
             { "gl",         group = "Lsp",      icon = { icon = icons.kind.Value,       color = "purple" } },
             { "glc",        group = "Calls",    icon = { icon = icons.kind.Function,    color = "purple" } },
