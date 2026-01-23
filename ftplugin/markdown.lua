@@ -9,5 +9,5 @@ vim.opt_local.breakindentopt = "list:-1" -- matches indentation to each wrapped 
 -- markdown list symbols declaration
 vim.opt_local.formatlistpat = "^\\s*[-*+>]\\s\\+\\|^\\s*\\d\\+[\\).]\\s*" -- works with `breakindentopt` (in lua/init/options)
 -- conceal quotes and code block delimiters
-vim.opt_local.conceallevel = 1 -- conceals things like code block (```), bold (**), and full path links in .md notes
+vim.opt_local.conceallevel = 3 -- conceals things like code block (```), bold (**), and full path links in .md notes
 -- vim.opt.concealcursor = "nc" -- works with conceallevel
