@@ -48,8 +48,8 @@ keymap("x", "p", [["_dP]], opts("Paste"))
 keymap("n", "J", "mzJ`z", opts("Join lines"))
 
 -- TROUBLE/QUICKFIX NAVIGATION
-keymap("n", "<M-j>", "<CMD>lua require('trouble').next({mode = 'qflist', jump = true})<CR>zz", opts("Quickfix Next"))
-keymap("n", "<M-k>", "<CMD>lua require('trouble').prev({mode = 'qflist', jump = true})<CR>zz", opts("Quickfix Prev"))
+keymap("n", "<M-j>", "<CMD>lua require('trouble').next({ jump = true })<CR>zz", opts("Trouble Next"))
+keymap("n", "<M-k>", "<CMD>lua require('trouble').prev({ jump = true })<CR>zz", opts("Trouble Prev"))
 
 -- INSERT MODE EDITING
 keymap("i", "<M-BS>", "<C-w>", opts("macOS delete previous word"))

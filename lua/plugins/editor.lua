@@ -80,8 +80,8 @@ return {
                         ["s"] = "none",
                         ["S"] = "none",
                         -- TODO: figure out why this isn't working
-                        ["<c-x>"] = "open_split",
-                        ["<c-v>"] = "open_vsplit",
+                        ["<C-x>"] = "open_split",
+                        ["<C-v>"] = "open_vsplit",
                         ["f"] = "open",
                     },
                 },
@@ -234,7 +234,16 @@ return {
             require("trouble").setup({
                 auto_close = true,
                 multiline = false,
-                use_diagnostic_signs = true
+                use_diagnostic_signs = true,
+                modes = {
+                    diagnostics_buffer = {
+                        mode = "diagnostics",
+                        filter = { buf = 0 },
+                        groups = {
+                            { "filename", format = "{file_icon} {basename:Title} {count}" }
+                        }
+                    }
+                }
                 -- TODO: figure out how to get telescope to send loclist and quickfix to trouble with (selected)<C-q> (all)<M-q>
             })
         end
