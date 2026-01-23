@@ -23,20 +23,24 @@ return {
         },
         -- LSPCONFIG --
         {
-            -- Default
-            { "K",      "<CMD>lua vim.lsp.buf.hover()<CR>",             desc = "Hover",             icon = { icon = icons.diagnostics.Diagnostic,   color = "cyan" } },
-            { "gd",     "<CMD>lua vim.lsp.buf.definition()<CR>",        desc = "Definition",        icon = { icon = icons.diagnostics.Diagnostic,   color = "cyan" } },
-            { "gD",     "<CMD>lua vim.lsp.buf.declaration()<CR>",       desc = "Declaration",       icon = { icon = icons.diagnostics.Diagnostic,   color = "cyan" } },
-            { "gla",    "<CMD>lua vim.lsp.buf.code_action()<CR>",       desc = "Code Action",       icon = { icon = icons.kind.Component,           color = "orange", mode = { "n", "v" }  }  },
-            { "gll",    "<CMD>lua vim.diagnostic.open_float()<CR>",     desc = "Diagnostic",        icon = { icon = icons.ui.Note,                  color = "grey" } },
-            { "glo",    "<CMD>Outline<CR>",                             desc = "Document Symbol",   icon = { icon = icons.kind.Keyword,             color = "purple" } },
-            { "glh",    "<CMD>InlayHintToggle<CR>",                     desc = "Inlay Hint",        icon = { icon = icons.diagnostics.Hint,         color = "yellow" } },
-            { "gli",    "<CMD>lua vim.lsp.buf.implementation()<CR>",    desc = "Implementations",   icon = { icon = icons.diagnostics.Diagnostic,   color = "cyan" } },
-            { "glr",    "<CMD>lua vim.lsp.buf.references()<CR>",        desc = "References",        icon = { icon = icons.diagnostics.Diagnostic,   color = "cyan" } },
-            { "gln",    "<CMD>lua vim.lsp.buf.rename()<CR>",            desc = "Rename",            icon = { icon = icons.diagnostics.Diagnostic,   color = "cyan" } },
-            { "glt",    "<CMD>lua vim.lsp.buf.type_definition()<CR>",   desc = "Type Definition",   icon = { icon = icons.diagnostics.Diagnostic,   color = "cyan" } },
-            { "glci",   "<CMD>lua vim.lsp.buf.incoming_calls()<CR>",    desc = "Incoming",          icon = { icon = icons.diagnostics.Diagnostic,   color = "cyan" } },
-            { "glco",   "<CMD>lua vim.lsp.buf.outgoing_calls()<CR>",    desc = "Outgoing",          icon = { icon = icons.diagnostics.Diagnostic,   color = "cyan" } },
+            { "K",      "<CMD>lua vim.lsp.buf.hover()<CR>",             desc = "Hover",                 icon = { icon = icons.diagnostics.Diagnostic,   color = "cyan" } },
+            { "gd",     "<CMD>lua vim.lsp.buf.definition()<CR>",        desc = "Definition",            icon = { icon = icons.diagnostics.Diagnostic,   color = "cyan" } },
+            { "gD",     "<CMD>lua vim.lsp.buf.declaration()<CR>",       desc = "Declaration",           icon = { icon = icons.diagnostics.Diagnostic,   color = "cyan" } },
+            { "gla",    "<CMD>lua vim.lsp.buf.code_action()<CR>",       desc = "Code Action",           icon = { icon = icons.kind.Component,           color = "orange" }, mode = { "n", "v" } },
+            { "glf",    "<CMD>lua vim.lsp.buf.format()<CR>",            desc = "Format",                icon = { icon = icons.kind.Object,              color = "orange" } },
+            { "gld",    "<CMD>Trouble diagnostics_buffer toggle<CR>",   desc = "Diagnostic (Buffer)",   icon = { icon = icons.ui.Note,                  color = "azure" } },
+            { "glD",    "<CMD>Trouble diagnostics toggle<CR>",          desc = "Diagnostic (Global)",   icon = { icon = icons.ui.Note,                  color = "blue" } },
+            { "gll",    "<CMD>lua vim.diagnostic.open_float()<CR>",     desc = "Diagnostic Float",      icon = { icon = icons.ui.Note,                  color = "grey" } },
+            { "glj",    "<CMD>lua vim.diagnostic.goto_next()<CR>",      desc = "Diagnostic Next",       icon = { icon = icons.ui.BoldArrowRight,        color = "orange" } },
+            { "glk",    "<CMD>lua vim.diagnostic.goto_prev()<CR>",      desc = "Diagnostic Prev",       icon = { icon = icons.ui.BoldArrowLeft,         color = "orange" } },
+            { "glo",    "<CMD>Outline<CR>",                             desc = "Symbols",               icon = { icon = icons.kind.Keyword,             color = "purple" } },
+            { "glh",    "<CMD>InlayHintToggle<CR>",                     desc = "Inlay Hint",            icon = { icon = icons.diagnostics.Hint,         color = "yellow" } },
+            { "gli",    "<CMD>lua vim.lsp.buf.implementation()<CR>",    desc = "Implementations",       icon = { icon = icons.diagnostics.Diagnostic,   color = "cyan" } },
+            { "glr",    "<CMD>lua vim.lsp.buf.references()<CR>",        desc = "References",            icon = { icon = icons.diagnostics.Diagnostic,   color = "cyan" } },
+            { "gln",    "<CMD>lua vim.lsp.buf.rename()<CR>",            desc = "Rename",                icon = { icon = icons.diagnostics.Diagnostic,   color = "cyan" } },
+            { "glt",    "<CMD>lua vim.lsp.buf.type_definition()<CR>",   desc = "Type Definition",       icon = { icon = icons.diagnostics.Diagnostic,   color = "cyan" } },
+            { "glci",   "<CMD>lua vim.lsp.buf.incoming_calls()<CR>",    desc = "Incoming",              icon = { icon = icons.diagnostics.Diagnostic,   color = "cyan" } },
+            { "glco",   "<CMD>lua vim.lsp.buf.outgoing_calls()<CR>",    desc = "Outgoing",              icon = { icon = icons.diagnostics.Diagnostic,   color = "cyan" } },
         },
         -- NEO-TREE --
         {
@@ -61,11 +65,15 @@ return {
         -- SNACKS --
         {
             -- Picker
-            { "<leader>ff", "<CMD>lua Snacks.picker.files()<CR>",           desc = "Files",     icon = { icon = icons.ui.FindFile,  color = "cyan" } },
-            { "<leader>fs", "<CMD>lua Snacks.picker.grep()<CR>",            desc = "Text",      icon = { icon = icons.ui.FindText,  color = "cyan" } },
-            { "<leader>fb", "<CMD>lua Snacks.picker.buffers()<CR>",         desc = "Buffers",   icon = { icon = icons.ui.Table,     color = "purple" } },
-            { "<leader>fe", "<CMD>lua Snacks.picker.notifications()<CR>",   desc = "Errors",    icon = { icon = icons.ui.Bug,       color = "red" } },
-            { "<leader>fl", "<CMD>lua Snacks.picker.resume()<CR>",          desc = "Last",      icon = { icon = icons.ui.Search,    color = "green" } },
+            { "<leader>ff", "<CMD>lua Snacks.picker.files()<CR>",                                                   desc = "Files",         icon = { icon = icons.ui.FindFile,      color = "cyan" } },
+            { "<leader>fs", "<CMD>lua Snacks.picker.grep()<CR>",                                                    desc = "Text",          icon = { icon = icons.ui.FindText,      color = "cyan" } },
+            { "<leader>fc", "<CMD>lua Snacks.picker.todo_comments({ keywords = { 'TODO', 'FIX', 'FIXME' } })<CR>",  desc = "Todo",          icon = { icon = icons.misc.Time,        color = "cyan" } },
+            { "<leader>fb", "<CMD>lua Snacks.picker.buffers()<CR>",                                                 desc = "Buffers",       icon = { icon = icons.ui.Table,         color = "purple" } },
+            { "<leader>fo", "<CMD>lua Snacks.picker.lsp_symbols()<CR>",                                             desc = "LSP Symbols",   icon = { icon = icons.kind.Function,    color = "orange" } },
+            { "<leader>fO", "<CMD>lua Snacks.picker.lsp_workspace_symbols()<CR>",                                   desc = "LSP W Symbols", icon = { icon = icons.kind.Function,    color = "orange" } },
+            { "<leader>fe", "<CMD>lua Snacks.picker.notifications()<CR>",                                           desc = "Vim Errors",    icon = { icon = icons.ui.Bug,           color = "red" } },
+            { "<leader>fh", "<CMD>lua Snacks.picker.help()<CR>",                                                    desc = "Help",          icon = { icon = icons.ui.Files,         color = "grey" } },
+            { "<leader>fl", "<CMD>lua Snacks.picker.resume()<CR>",                                                  desc = "Last",          icon = { icon = icons.ui.Search,        color = "green" } },
             -- Git
             { "<leader>gl", "<CMD>lua Snacks.git.blame_line()<CR>",     desc = "Blame",     icon = { icon = icons.git.Git,      color = "orange" } },
             { "<leader>go", "<CMD>lua Snacks.gitbrowse.open()<CR>",     desc = "Browse",    icon = { icon = icons.git.Git,      color = "orange" } },
@@ -73,9 +81,9 @@ return {
             { "<leader>gg", "<CMD>lua Snacks.lazygit.open()<CR>",       desc = "Lazygit",   icon = { icon = icons.git.Branch,   color = "yellow" } },
             -- GitHub
             { "<leader>gGi", "<CMD>lua Snacks.picker.gh_issue()<CR>",                    desc = "Issues (Open)",  icon = { icon = icons.git.Octoface, color = "blue" } },
-            { "<leader>gGI", "<CMD>lua Snacks.picker.gh_issue({ state = <CR>'all' })",   desc = "Issues (All)",   icon = { icon = icons.git.Octoface, color = "blue" } },
+            { "<leader>gGI", "<CMD>lua Snacks.picker.gh_issue({ state = 'all' })<CR>",   desc = "Issues (All)",   icon = { icon = icons.git.Octoface, color = "blue" } },
             { "<leader>gGp", "<CMD>lua Snacks.picker.gh_pr()<CR>",                       desc = "PRs (Open)",     icon = { icon = icons.git.Octoface, color = "purple" } },
-            { "<leader>gGP", "<CMD>lua Snacks.picker.gh_pr({ state = <CR>'all' })",      desc = "PRs (All)",      icon = { icon = icons.git.Octoface, color = "purple" } },
+            { "<leader>gGP", "<CMD>lua Snacks.picker.gh_pr({ state = 'all' })<CR>",      desc = "PRs (All)",      icon = { icon = icons.git.Octoface, color = "purple" } },
         },
         -- ILLUMINATE --
         {
@@ -85,13 +93,14 @@ return {
         -- OPENCODE --
         {
             { "<leader>ha", "<CMD>lua require('opencode').ask('@this: ', { submit = true })<CR>",           desc = "Ask Line",          icon = { icon = icons.misc.Robot,  color = "green" } ,    mode = { "n", "v" } },
-            { "<leader>hf", "<CMD>lua require('opencode').ask('@buffer: ', { submit = true })<CR>",         desc = "Ask File",          icon = { icon = icons.misc.Robot,  color = "green" } ,    mode = { "n", "v" } },
-            { "<leader>hq", "<CMD>lua require('opencode').ask('@quickfix: ', { submit = true })<CR>",       desc = "Ask Qflist",        icon = { icon = icons.misc.Robot,  color = "green" } ,    mode = { "n", "v" } },
-            { "<leader>hd", "<CMD>lua require('opencode').ask('@diagnostics: ', { submit = true })<CR>",    desc = "Ask Diagnostics",   icon = { icon = icons.misc.Robot,  color = "green" } ,    mode = { "n", "v" } },
+            { "<leader>hf", "<CMD>lua require('opencode').ask('@buffer: ', { submit = true })<CR>",         desc = "Ask File",          icon = { icon = icons.misc.Robot,  color = "green" } },
+            { "<leader>hq", "<CMD>lua require('opencode').ask('@quickfix: ', { submit = true })<CR>",       desc = "Ask Qflist",        icon = { icon = icons.misc.Robot,  color = "green" } },
+            { "<leader>hd", "<CMD>lua require('opencode').ask('@diagnostics: ', { submit = true })<CR>",    desc = "Ask Diagnostics",   icon = { icon = icons.misc.Robot,  color = "green" } },
             { "<leader>hs", "<CMD>lua require('opencode').select()<CR>",                                    desc = "Execute Action",    icon = { icon = icons.misc.Robot,  color = "orange" },    mode = { "n", "v" } },
             { "<leader>hu", "<CMD>lua require('opencode').command('session.undo')<CR>",                     desc = "Undo",              icon = { icon = icons.misc.Robot,  color = "yellow" } },
             { "<leader>hr", "<CMD>lua require('opencode').command('session.redo')<CR>",                     desc = "Redo",              icon = { icon = icons.misc.Robot,  color = "yellow" } },
-            { "<leader>ht", "<CMD>lua require('opencode').toggle()<CR>",                                    desc = "Toggle Opencode",   icon = { icon = icons.misc.Robot,  color = "red" } }
+            { "<leader>ht", "<CMD>lua require('opencode').toggle()<CR>",                                    desc = "Toggle Opencode",   icon = { icon = icons.misc.Robot,  color = "red" } },
+            { "<leader>hp", "<CMD>PerlesRoot<CR>",                                                          desc = "Perles",            icon = { icon = icons.kind.Reference,  color = "red" } }
         },
     }
 }
