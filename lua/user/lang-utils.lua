@@ -9,6 +9,7 @@ return {
         "gomod",
         "gosum",
         "gowork",
+        "helm",
         "jinja",
         "json",
         "make",
