@@ -23,6 +23,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
 
 -- Highjack quickfix list and replace with trouble.nvim
 vim.api.nvim_create_autocmd("BufRead", {
+  group = vim.api.nvim_create_augroup("TroubleQfHijack", { clear = true }),
   callback = function(ev)
     if vim.bo[ev.buf].buftype == "quickfix" then
       vim.schedule(function()
@@ -35,6 +36,7 @@ vim.api.nvim_create_autocmd("BufRead", {
 
 -- Use 'q' to close buf with certain files
 vim.api.nvim_create_autocmd("FileType", {
+    group = vim.api.nvim_create_augroup("CloseWithQ", { clear = true }),
     pattern = {
         "",
         "dbout",
@@ -52,5 +54,16 @@ vim.api.nvim_create_autocmd("FileType", {
             nnoremap <silent> <buffer> q :close<CR>
             set nobuflisted
         ]])
+    end,
+})
+
+-- Remove Trailing whitespaces on save
+vim.api.nvim_create_autocmd('BufWritePre', {
+    group = vim.api.nvim_create_augroup("TrimTrailingWhitespace", { clear = true }),
+    pattern = '*',
+    callback = function()
+        local pos = vim.fn.getpos('.')
+        vim.cmd([[%s/\s\+$//e]])
+        vim.fn.setpos('.', pos)
     end,
 })
