@@ -163,7 +163,10 @@ return {
         CircuitBoard = " ",
         Time = "󰔟 ",
         Vim = " ",
-        Database = " "
+        Database = " ",
+        Chef = "󰭼 ",
+        Ghost = " ",
+        Wrap = "󰖶 ",
     },
 }
 
