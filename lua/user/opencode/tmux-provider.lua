@@ -4,10 +4,9 @@ local pane_id = nil
 local tmux_opts = "-h -l 41%"
 
 -- grab a free port from the OS (unique per nvim instance)
----@diagnostic disable: undefined-field
-local srv = vim.uv.new_tcp()
+local srv = assert(vim.uv.new_tcp())
 srv:bind("127.0.0.1", 0)
-M.port = srv:getsockname().port
+M.port = assert(srv:getsockname()).port
 srv:close()
 
 local opencode_cmd = "opencode --port " .. M.port

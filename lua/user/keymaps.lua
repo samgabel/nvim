@@ -31,8 +31,8 @@ return {
             { "gld",    "<CMD>Trouble diagnostics_buffer toggle<CR>",   desc = "Diagnostic (Buffer)",   icon = { icon = icons.ui.Note,                  color = "azure" } },
             { "glD",    "<CMD>Trouble diagnostics toggle<CR>",          desc = "Diagnostic (Global)",   icon = { icon = icons.ui.Note,                  color = "blue" } },
             { "gll",    "<CMD>lua vim.diagnostic.open_float()<CR>",     desc = "Diagnostic Float",      icon = { icon = icons.ui.Note,                  color = "grey" } },
-            { "glj",    "<CMD>lua vim.diagnostic.goto_next()<CR>",      desc = "Diagnostic Next",       icon = { icon = icons.ui.BoldArrowRight,        color = "orange" } },
-            { "glk",    "<CMD>lua vim.diagnostic.goto_prev()<CR>",      desc = "Diagnostic Prev",       icon = { icon = icons.ui.BoldArrowLeft,         color = "orange" } },
+            { "glj",    "<CMD>lua vim.diagnostic.jump({ count = 1, float = true })<CR>",  desc = "Diagnostic Next",       icon = { icon = icons.ui.BoldArrowRight,        color = "orange" } },
+            { "glk",    "<CMD>lua vim.diagnostic.jump({ count = -1, float = true })<CR>", desc = "Diagnostic Prev",       icon = { icon = icons.ui.BoldArrowLeft,         color = "orange" } },
             { "glo",    "<CMD>Outline<CR>",                             desc = "Symbols",               icon = { icon = icons.kind.Keyword,             color = "purple" } },
             { "glh",    "<CMD>InlayHintToggle<CR>",                     desc = "Inlay Hint",            icon = { icon = icons.diagnostics.Hint,         color = "yellow" } },
             { "gli",    "<CMD>lua vim.lsp.buf.implementation()<CR>",    desc = "Implementations",       icon = { icon = icons.diagnostics.Diagnostic,   color = "cyan" } },
@@ -92,14 +92,14 @@ return {
         },
         -- OPENCODE --
         {
-            { "<leader>ha", "<CMD>lua require('opencode').ask('@this: ', { submit = true })<CR>",           desc = "Ask Line",          icon = { icon = icons.misc.Robot,  color = "green" } ,    mode = { "n", "v" } },
-            { "<leader>hf", "<CMD>lua require('opencode').ask('@buffer: ', { submit = true })<CR>",         desc = "Ask File",          icon = { icon = icons.misc.Robot,  color = "green" } },
-            { "<leader>hq", "<CMD>lua require('opencode').ask('@quickfix: ', { submit = true })<CR>",       desc = "Ask Qflist",        icon = { icon = icons.misc.Robot,  color = "green" } },
-            { "<leader>hd", "<CMD>lua require('opencode').ask('@diagnostics: ', { submit = true })<CR>",    desc = "Ask Diagnostics",   icon = { icon = icons.misc.Robot,  color = "green" } },
+            { "<leader>ha", "<CMD>lua require('opencode').ask('@this: ')<CR>",                              desc = "Ask Line",          icon = { icon = icons.misc.Robot,  color = "green" } ,    mode = { "n", "v" } },
+            { "<leader>hf", "<CMD>lua require('opencode').ask('@buffer: ')<CR>",                            desc = "Ask File",          icon = { icon = icons.misc.Robot,  color = "green" } },
+            { "<leader>hq", "<CMD>lua require('opencode').ask('@quickfix: ')<CR>",                          desc = "Ask Qflist",        icon = { icon = icons.misc.Robot,  color = "green" } },
+            { "<leader>hd", "<CMD>lua require('opencode').ask('@diagnostics: ')<CR>",                       desc = "Ask Diagnostics",   icon = { icon = icons.misc.Robot,  color = "green" } },
             { "<leader>hs", "<CMD>lua require('opencode').select()<CR>",                                    desc = "Execute Action",    icon = { icon = icons.misc.Robot,  color = "orange" },    mode = { "n", "v" } },
             { "<leader>hu", "<CMD>lua require('opencode').command('session.undo')<CR>",                     desc = "Undo",              icon = { icon = icons.misc.Robot,  color = "yellow" } },
             { "<leader>hr", "<CMD>lua require('opencode').command('session.redo')<CR>",                     desc = "Redo",              icon = { icon = icons.misc.Robot,  color = "yellow" } },
-            { "<leader>ht", "<CMD>lua require('opencode').toggle()<CR>",                                    desc = "Toggle Opencode",   icon = { icon = icons.misc.Robot,  color = "red" } },
+            { "<leader>ht", "<CMD>lua require('user.opencode.tmux-provider').toggle()<CR>",                 desc = "Toggle Opencode",   icon = { icon = icons.misc.Robot,  color = "red" } },
             { "<leader>hp", "<CMD>PerlesRoot<CR>",                                                          desc = "Perles",            icon = { icon = icons.kind.Reference,  color = "red" } }
         },
     }
