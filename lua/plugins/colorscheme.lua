@@ -5,7 +5,6 @@ return {
     config = function()
         require("catppuccin").setup {
             integrations = {
-                alpha = true,
                 neotree = true,
                 noice = true,
                 notify = true,
@@ -16,7 +15,6 @@ return {
                 navic = true,
                 neotest = true,
                 dap = true,
-                aerial = true,
                 dashboard = true,
                 flash = true,
                 fzf = true,
@@ -27,7 +25,6 @@ return {
                 indent_blankline = { enabled = true },
                 leap = true,
                 lsp_trouble = true,
-                mini = true,
                 snacks = true,
                 telescope = true,
                 treesitter_context = true,
@@ -38,6 +35,6 @@ return {
                 solid = false
             }
         }
-        vim.cmd.colorscheme "catppuccin"
+        vim.cmd.colorscheme("catppuccin-mocha")
     end
 }
