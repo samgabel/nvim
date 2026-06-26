@@ -57,6 +57,16 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+-- Reload buffers changed on disk (e.g. external edits / chezmoi apply)
+vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave", "BufEnter", "TabEnter" }, {
+    group = vim.api.nvim_create_augroup("CheckTimeReload", { clear = true }),
+    callback = function()
+        if vim.o.buftype ~= "nofile" and vim.fn.getcmdwintype() == "" then
+            vim.cmd("checktime")
+        end
+    end,
+})
+
 -- Remove Trailing whitespaces on save
 vim.api.nvim_create_autocmd('BufWritePre', {
     group = vim.api.nvim_create_augroup("TrimTrailingWhitespace", { clear = true }),
