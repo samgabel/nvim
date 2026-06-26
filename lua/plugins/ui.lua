@@ -116,9 +116,29 @@ return {
             "linrongbin16/lsp-progress.nvim",
         },
         config = function()
+            -- ---- Custom components ------------------------------------------------------
+            -- Resolve the chezmoi source dir once (single shell call at setup)
+            ---@type string?
+            local chezmoi_src = vim.trim(vim.fn.system("chezmoi source-path"))
+            if vim.v.shell_error ~= 0 then
+                chezmoi_src = nil
+            end
+            -- Statusline indicator: shown when the open file is inside the chezmoi source dir
+            local function chezmoi_status()
+                if not chezmoi_src or chezmoi_src == "" then
+                    return ""
+                end
+                local file = vim.fn.expand("%:p")
+                if file == "" then
+                    return ""
+                end
+                if file == chezmoi_src or vim.startswith(file, chezmoi_src .. "/") then
+                    return "󰭼 chezmoi"
+                end
+                return ""
+            end
             -- Change diff source because of neovim update problem and faster update time
             local function diff_source()
-                ---@diagnostic disable-next-line: undefined-field
                 local gitsigns = vim.b.gitsigns_status_dict
                 if gitsigns then
                     return {
@@ -128,6 +148,7 @@ return {
                     }
                 end
             end
+            -- ---- Setup ------------------------------------------------------------------
             require("lualine").setup {
                 options = {
                     component_separators = { left = "", right = "" },
@@ -147,15 +168,16 @@ return {
                     lualine_x = {
                         { function() return require("lsp-progress").progress() end, },
                         "diagnostics",
+                        { chezmoi_status, color = { fg = "#e0af68" } },
                         "filetype",
                     },
                     lualine_y = {
                         "progress"
                     },
-                    -- lualine_z = { GetTmuxSession },
                 },
                 extensions = { "trouble", "nvim-dap-ui", "quickfix", "man", "fugitive" },
             }
+            -- ---- Refresh hooks ----------------------------------------------------------
             -- Listen lsp-progress event and refresh lualine (allows smoother lualine updating)
             vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
             vim.api.nvim_create_autocmd("User", {

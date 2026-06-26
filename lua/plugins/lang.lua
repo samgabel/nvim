@@ -38,7 +38,6 @@ return {
             cmd = { "ChezmoiEdit", "ChezmoiList" },
             dependencies = { 'nvim-lua/plenary.nvim' },
             config = function ()
-                -- TODO: flesh out once new config in XDG_CONFIG_HOME
                 require("chezmoi").setup({})
             end
         }

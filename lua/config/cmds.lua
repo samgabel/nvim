@@ -44,3 +44,47 @@ vim.api.nvim_create_user_command("DeleteListedBuffers", function()
         })
     end
 end, {})
+
+-- ChezmoiPickTab
+-- Pick a chezmoi-managed file in the current buffer, then open it in a new tab
+vim.api.nvim_create_user_command("ChezmoiPickTab", function()
+    local results = require("chezmoi.commands").list({
+        args = {
+            "--path-style", "absolute",
+            "--include", "files",
+            "--exclude", "externals",
+        },
+    })
+    local items = {}
+    for _, czFile in ipairs(results) do
+        table.insert(items, { text = czFile, file = czFile })
+    end
+    require("snacks").picker.pick({
+        items = items,
+        confirm = function(picker, item)
+            picker:close()
+            vim.cmd("tabnew")
+            require("chezmoi.commands").edit({
+                targets = { item.text },
+                args = { "--watch" },
+            })
+        end,
+    })
+end, {})
+
+-- ChezmoiEditTab
+-- Open the current buffer's chezmoi source file in a new tab (if managed)
+vim.api.nvim_create_user_command("ChezmoiEditTab", function()
+    local filepath = vim.api.nvim_buf_get_name(0)
+    local managed = require("chezmoi.commands").source_path({
+        targets = { filepath },
+        args = {},
+        on_stderr = function() end,
+    })
+    if not managed or not managed[1] or managed[1] == "" then
+        vim.notify("Not a chezmoi-managed file: " .. filepath, vim.log.levels.WARN)
+        return
+    end
+    vim.cmd("tabnew")
+    require("chezmoi.commands").edit({ targets = { filepath }, args = { "--watch" } })
+end, {})

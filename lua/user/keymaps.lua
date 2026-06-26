@@ -446,5 +446,21 @@ return {
                 icon = { icon = icons.kind.Reference, color = "red" },
             },
         },
-    }
+        -- CHEZMOI --
+        {
+            {
+                "<leader>cl",
+                "<CMD>ChezmoiPickTab<CR>",
+                desc = "List",
+                icon = { icon = icons.misc.Robot, color = "green" },
+                mode = { "n", "v" },
+            },
+            {
+                "<leader>ce",
+                "<CMD>ChezmoiEditTab<CR>",
+                desc = "Edit",
+                icon = { icon = icons.misc.Robot, color = "green" },
+            },
+        },
+    },
 }
