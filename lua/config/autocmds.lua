@@ -77,3 +77,13 @@ vim.api.nvim_create_autocmd('BufWritePre', {
         vim.fn.setpos('.', pos)
     end,
 })
+
+-- Overwrite neovim's shebang shell ft detection to be ft=bash instead of ft=sh (even on .bash files)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "sh",
+  callback = function()
+    if vim.b.is_bash == 1 or vim.g.is_bash == 1 then
+      vim.bo.filetype = "bash"
+    end
+  end,
+})
