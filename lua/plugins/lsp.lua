@@ -61,7 +61,7 @@ return {
             -- Diagnostic Config
             vim.diagnostic.config({
                 underline = true,
-                virtual_lines = true,
+                virtual_lines = { current_line = true },
                 float = {
                     focusable = true,
                     style = "minimal",
